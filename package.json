@@ -1,0 +1,30 @@
+{
+  "name": "document-outliner",
+  "version": "0.0.1",
+  "description": "HTML5 Outliner.",
+  "main": "lib/index.js",
+  "type": "lib/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --config webpack.dev.js",
+    "bundle": "webpack --config webpack.prod.js",
+    "build": "tsc"
+  },
+  "keywords": [
+    "html5",
+    "outline"
+  ],
+  "author": "atsu666",
+  "license": "MIT",
+  "devDependencies": {
+    "awesome-typescript-loader": "^5.2.1",
+    "jest": "^23.6.0",
+    "puppeteer": "^1.11.0",
+    "typescript": "^3.2.2",
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10",
+    "webpack-merge": "^4.1.5"
+  },
+  "dependencies": {}
+}
