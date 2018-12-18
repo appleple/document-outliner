@@ -23,7 +23,7 @@ const isSectioningContent = (el: NodeType): boolean => {
 };
 
 const isHeadingContent = (el: NodeType): boolean => {
-  return checkTagWithRegex(el, /^(h1|h2|h3|h4|h5|h6|hgroup)$/);
+  return checkTagWithRegex(el, /^(h1|h2|h3|h4|h5|h6)$/);
 };
 
 const isHidden = (el: NodeType): boolean => {
@@ -36,4 +36,11 @@ const isHidden = (el: NodeType): boolean => {
   return isElement(el) && el.hasAttribute('hidden');
 };
 
-export { isSectioningRoot, isSectioningContent, isHeadingContent, isHidden };
+const getHeadingLevel = (el: NodeType): number => {
+  if (!(el instanceof HTMLElement) || !isHeadingContent(el)) {
+    return 0;
+  }
+  return parseInt(el.tagName.toLowerCase().substr(1));
+};
+
+export { isSectioningRoot, isSectioningContent, isHeadingContent, isHidden, getHeadingLevel };

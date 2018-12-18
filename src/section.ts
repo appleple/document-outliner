@@ -1,18 +1,23 @@
-import {OutlineType, NodeType} from "./type";
+import {NodeType, SectionType} from "./type";
 
 export default class Section {
 
-  associatedOutlines: Array<OutlineType>;
   node: NodeType;
-  heading: Object | null;
+  implied: boolean;
+  heading: NodeType;
+  parent: SectionType | null;
+  sections: Array<SectionType>;
 
   constructor(node: NodeType) {
     this.node = node;
-    this.associatedOutlines = [];
+    this.implied = false;
     this.heading = null;
+    this.sections = [];
+    this.parent = null;
   }
 
-  addAssociateOutline(outline: OutlineType): void {
-    this.associatedOutlines.push(outline);
+  public addSection(section: SectionType) {
+    section.parent = this;
+    this.sections.push(section);
   }
 }

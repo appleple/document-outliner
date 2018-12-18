@@ -1,39 +1,36 @@
-import {SectionType, NodeType} from "./type";
+import {SectionType, OutlineType, NodeType} from "./type";
 
 export default class Outline {
 
-  sectionList: Array<SectionType>;
-  associatedSection: SectionType;
-  parentSection: SectionType;
-  firstSection: SectionType;
-  lastSection: SectionType;
+  sections: Array<SectionType>;
+  parentSection: SectionType | null;
   node: NodeType;
+  outline: OutlineType;
 
-  constructor(node: NodeType) {
+  constructor(node: NodeType, section: SectionType | null = null) {
     this.node = node;
-    this.sectionList = [];
-    this.associatedSection = null;
+    this.sections = [];
     this.parentSection = null;
-    this.firstSection = null;
-    this.lastSection = null;
+    this.outline = this;
+    if (section) {
+      this.addSection(section);
+    }
   }
 
-  public appendSection(section: SectionType): void {
-    this.sectionList.push(section);
-    if (this.firstSection === null) this.firstSection = section;
-    this.lastSection = section;
-  }
-
-  public setAssociatedSection(section: SectionType): void {
-    this.associatedSection = section;
+  public addSection(section: SectionType): void {
+    this.sections.push(section);
   }
 
   public setParentSection(section: SectionType): void {
     this.parentSection = section;
   }
 
-  public getParentSection(): SectionType {
+  public getParentSection(): SectionType | null {
     return this.parentSection;
+  }
+
+  public getLastSection(): SectionType {
+    return this.sections[this.sections.length - 1];
   }
 
   public setNode(node: NodeType): void {
