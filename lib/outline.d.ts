@@ -1,16 +1,20 @@
-import { SectionType, NodeType } from "./type";
+import { SectionType, OutlineType, NodeType } from "./type";
+declare type SectionsType = Array<SectionType>;
 export default class Outline {
-    sectionList: Array<SectionType>;
-    associatedSection: SectionType;
-    parentSection: SectionType;
-    firstSection: SectionType;
-    lastSection: SectionType;
-    node: NodeType;
-    constructor(node: NodeType);
-    appendSection(section: SectionType): void;
-    setAssociatedSection(section: SectionType): void;
+    protected sections: SectionsType;
+    protected parentSection: SectionType | null;
+    protected node: NodeType;
+    protected outline: OutlineType;
+    constructor(node: NodeType, section?: SectionType | null);
+    getOutline(): OutlineType;
+    setOutline(outline: OutlineType): void;
+    getSections(): SectionsType;
+    setSections(sections: SectionsType): void;
+    addSection(section: SectionType): void;
     setParentSection(section: SectionType): void;
-    getParentSection(): SectionType;
+    getParentSection(): SectionType | null;
+    getLastSection(): SectionType;
     setNode(node: NodeType): void;
     getNode(): NodeType;
 }
+export {};

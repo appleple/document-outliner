@@ -1,20 +1,35 @@
 import {SectionType, OutlineType, NodeType} from "./type";
 
+type SectionsType = Array<SectionType>;
+
 export default class Outline {
 
-  sections: Array<SectionType>;
-  parentSection: SectionType | null;
-  node: NodeType;
-  outline: OutlineType;
+  protected sections: SectionsType = [];
+  protected parentSection: SectionType | null = null;
+  protected node: NodeType = null;
+  protected outline: OutlineType = this;
 
   constructor(node: NodeType, section: SectionType | null = null) {
-    this.node = node;
-    this.sections = [];
-    this.parentSection = null;
-    this.outline = this;
+    this.setNode(node);
     if (section) {
       this.addSection(section);
     }
+  }
+
+  public getOutline(): OutlineType {
+    return this.outline;
+  }
+
+  public setOutline(outline: OutlineType) {
+    this.outline = outline;
+  }
+
+  public getSections(): SectionsType {
+    return this.sections;
+  }
+
+  public setSections(sections: SectionsType) {
+    this.sections = sections;
   }
 
   public addSection(section: SectionType): void {

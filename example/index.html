@@ -6,18 +6,45 @@
 </head>
 <body>
 
-<h1>The Tax Book</h1>
-<section>
-	<h1>Earning money</h1>
-	<p>Earning money is good.</p>
+<div class="output"></div>
+
+<div class="container">
+	<h1>test</h1>
 	<section>
-		<h1>Getting a job</h1>
-		<p>To earn money you typically need a job.</p>
+		<h1>test</h1>
+		<section>
+			<h2>h2</h2>
+			<h3>h3</h3>
+		</section>
 	</section>
-</section>
+	<h1>hoge</h1>
+	<section>
+		<h1>The Tax Book</h1>
+		<h2>The Tax Book2</h2>
+		<h1>The Tax Book</h1>
+	</section>
+
+	<section>
+		<h1>The Tax Book</h1>
+		<h2>The Tax Book2</h2>
+		<h1>The Tax Book</h1>
+	</section>
+</div>
 
 <script>
-  const outliner = new DocumentOutliner();
+  const outliner = new DocumentOutliner(document.querySelector('.container'));
+  document.querySelector('.output').innerHTML = outliner.buildHtml({
+    link: true,
+    listType: 'ol',
+    listClassName: 'ul-class1 ul-class2',
+    itemClassName: 'li-class',
+    anchorName: 'anchor-$1',
+    levelLimit: 3
+  });
+
+  const obj = outliner.getOutlineObject();
+  console.log(obj);
 </script>
 </body>
 </html>
+
