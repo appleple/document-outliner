@@ -14,5 +14,6 @@ export default class Section {
     setHeading(heading: NodeType): void;
     getParent(): SectionType | null;
     setParent(section: SectionType): void;
+    getSections(): Array<SectionType>;
     addSection(section: SectionType): void;
 }

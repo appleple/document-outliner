@@ -47,6 +47,8 @@ export default class DocumentOutliner {
       link: true,
       listType: 'ol',
       levelLimit: 99,
+      listClassName: '',
+      itemClassName: '',
       anchorName: 'anchor-$1'
     }, options);
 
