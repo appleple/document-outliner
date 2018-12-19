@@ -50,7 +50,8 @@
 
 <script>
   const outliner = new DocumentOutliner(document.querySelector('.src'));
-  document.querySelector('.result').innerHTML = outliner.buildHtml({
+  outliner.buildHtml({
+    target: '.result',
     link: false
   });
 </script>

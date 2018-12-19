@@ -3,12 +3,15 @@ const { CheckerPlugin } = require('awesome-typescript-loader');
 
 module.exports = {
   mode: "production",
-  entry: './src/index',
+  entry: {
+    'document-outliner': './src/index',
+    'jquery-document-outliner': './src/adaptor/jquery'
+  },
   output: {
     path: path.resolve(__dirname, 'bundle'),
     publicPath: "bundle",
-    filename: 'document-outliner.js',
-    library: 'DocumentOutliner',
+    filename: '[name].js',
+    library: ['DocumentOutliner'],
     libraryExport: "default",
     libraryTarget: 'umd'
   },

@@ -46,7 +46,8 @@
 
 <script>
   const outliner = new DocumentOutliner(document.querySelector('.container'));
-  document.querySelector('.output').innerHTML = outliner.buildHtml({
+  outliner.buildHtml({
+    target: document.querySelector('.output'),
     link: true,
     listType: 'ol',
     listClassName: 'ul-class1 ul-class2',

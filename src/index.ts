@@ -1,4 +1,4 @@
-import {SectionType, OutlineType, NodeType} from "./type";
+import {SectionType, OutlineType, NodeType, OptionsType} from "./type";
 import Section from "./section";
 import Outline from "./outline";
 import {
@@ -8,15 +8,6 @@ import {
   isHidden,
   getHeadingLevel
 } from "./util";
-
-type OptionsType = {
-  link?: boolean,
-  listType?: 'ul' | 'ol',
-  listClassName?: string,
-  itemClassName?: string,
-  anchorName?: string,
-  levelLimit?: number
-} | null;
 
 /**
  * @see https://html.spec.whatwg.org/multipage/sections.html#outline [4.3.11.1 Creating an outline]
@@ -40,7 +31,7 @@ export default class DocumentOutliner {
     return this.currentOutlineTarget.getOutline();
   }
 
-  public buildHtml(options: OptionsType = null): string {
+  public buildHtml(options: OptionsType): void {
     let html = '';
     let anchor = 1;
     const opt = Object.assign({}, {
@@ -51,7 +42,9 @@ export default class DocumentOutliner {
       itemClassName: '',
       anchorName: 'anchor-$1'
     }, options);
-
+    if (!opt.target) {
+      throw new TypeError('Invalid options: target empty.');
+    }
     if (!/ol|ul/.test(opt.listType)) {
       throw new TypeError("Invalid options: linkType be ul or ol.");
     }
@@ -94,7 +87,19 @@ export default class DocumentOutliner {
       }
     };
     output(this.currentOutlineTarget.getOutline(), 1);
-    return html;
+
+    if (typeof opt.target === 'string') {
+      [].forEach.call(document.querySelectorAll(opt.target), (dom: HTMLElement) => {
+        dom.innerHTML = html;
+      });
+    } else if (opt.target instanceof NodeList) {
+      [].forEach.call(opt.target, (dom: HTMLElement) => {
+        dom.innerHTML = html;
+      });
+    } else {
+      const target = opt.target as HTMLElement;
+      target.innerHTML = html;
+    }
   }
 
   protected static walk(root: NodeType, enter: (node: NodeType) => void, exit: (node: NodeType) => void) {

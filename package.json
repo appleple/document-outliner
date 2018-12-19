@@ -5,10 +5,11 @@
   "main": "lib/index.js",
   "type": "lib/index.d.ts",
   "scripts": {
-    "test": "jest",
+    "test": "npm run build && jest",
     "dev": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "build:lib": "tsc"
+    "build:lib": "tsc",
+    "deploy": "np --no-cleanup"
   },
   "keywords": [
     "html5",
@@ -21,11 +22,15 @@
     "html-minifier": "^3.5.21",
     "jest": "^23.6.0",
     "jest-puppeteer": "^3.7.0",
+    "np": "^3.1.0",
     "puppeteer": "^1.11.0",
     "typescript": "^3.2.2",
     "webpack": "^4.27.1",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10",
     "webpack-merge": "^4.1.5"
+  },
+  "dependencies": {
+    "@types/jquery": "^3.3.28"
   }
 }
