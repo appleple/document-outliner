@@ -8,6 +8,7 @@ declare type OptionsType = {
     listType?: 'ul' | 'ol';
     listClassName?: string;
     itemClassName?: string;
+    linkClassName?: string;
     anchorName?: string;
     levelLimit?: number;
 };
