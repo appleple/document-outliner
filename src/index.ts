@@ -74,8 +74,9 @@ export default class DocumentOutliner {
         if (heading) {
           if (opt.link) {
             const anchorName = opt.anchorName.replace(/\$1/, anchor.toString());
+            const anchorClassName = opt.linkClassName ? ` class="${opt.linkClassName}"` : '';
             heading.id = anchorName;
-            html += `<li class="${opt.itemClassName}"><a href="#${anchorName}" class="${opt.linkClassName}">${heading.innerText}</a></li>`;
+            html += `<li class="${opt.itemClassName}"><a href="#${anchorName}"${anchorClassName}>${heading.innerText}</a></li>`;
           } else {
             html += `<li class="${opt.itemClassName}">${heading.innerText}</li>`;
           }
