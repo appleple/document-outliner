@@ -5,17 +5,24 @@
   "main": "lib/index.js",
   "type": "lib/index.d.ts",
   "scripts": {
-    "test": "npm run build && jest",
+    "test": "npm run build && npm run build:lib && jest",
     "dev": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "build:lib": "tsc",
     "deploy": "np --no-cleanup"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/appleple/document-outliner"
+  },
   "keywords": [
     "html5",
     "outline"
   ],
-  "author": "atsu666",
+  "author": {
+    "name": "Atsushi Ito (atsu666)",
+    "email": "ito@appleple.com"
+  },
   "license": "MIT",
   "devDependencies": {
     "awesome-typescript-loader": "^5.2.1",
