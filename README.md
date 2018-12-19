@@ -16,6 +16,12 @@ A utility to make ol/ul list by using html5 outline algorithm.
 npm install document-outliner
 ```
 
+#### via yarn
+
+```sh
+yarn add document-outliner
+```
+
 #### vid cdn
 
 ```html
