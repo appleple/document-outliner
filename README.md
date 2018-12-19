@@ -57,6 +57,7 @@ $(function () {
 | listType | HTML list type | 'ol' |
 | listClassName | ol/ul class name | '' |
 | itemClassName | li class name | '' |
+| linkClassName | link class name | '' |
 | anchorName | anchor link name ($1 is to be link number) | 'heading-$1' |
 | levelLimit | limit on number of level | 99 |
 
