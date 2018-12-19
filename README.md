@@ -57,7 +57,7 @@ $(function () {
 | listType | HTML list type | 'ol' |
 | listClassName | ol/ul class name | '' |
 | itemClassName | li class name | '' |
-| anchorName | anchor link name ($1 is to be link number) | 'anchor-$1' |
+| anchorName | anchor link name ($1 is to be link number) | 'heading-$1' |
 | levelLimit | limit on number of level | 99 |
 
 ## Example
@@ -68,39 +68,39 @@ $(function () {
 <div class="outline"></div>
 
 <div class="container">
-	<h1>The Tax Book</h1>
-	<section>
-		<h1>Earning money</h1>
-		<p>Earning money is good.</p>
-		<section>
-			<h1>Getting a job</h1>
-			<p>To earn money you typically need a job.</p>
-		</section>
-	</section>
-	<section>
-		<h1>Spending money</h1>
-		<p>Spending is what money is mainly used for.</p>
-		<section>
-			<h1>Cheap things</h1>
-			<p>Buying cheap things often not cost-effective.</p>
-		</section>
-		<section>
-			<h1>Expensive things</h1>
-			<p>The most expensive thing is often not the most cost-effective either.</p>
-		</section>
-	</section>
-	<section>
-		<h1>Investing money</h1>
-		<p>You can lend your money to other people.</p>
-	</section>
-	<section>
-		<h1>Losing money</h1>
-		<p>If you spend money or invest money, sooner or later you will lose money.</p>
-		<section>
-			<h1>Poor judgement</h1>
-			<p>Usually if you lose money it's because you made a mistake.</p>
-		</section>
-	</section>
+  <h1>The Tax Book</h1>
+  <section>
+    <h1>Earning money</h1>
+    <p>Earning money is good.</p>
+    <section>
+      <h1>Getting a job</h1>
+      <p>To earn money you typically need a job.</p>
+    </section>
+  </section>
+  <section>
+    <h1>Spending money</h1>
+    <p>Spending is what money is mainly used for.</p>
+    <section>
+      <h1>Cheap things</h1>
+      <p>Buying cheap things often not cost-effective.</p>
+    </section>
+    <section>
+      <h1>Expensive things</h1>
+      <p>The most expensive thing is often not the most cost-effective either.</p>
+    </section>
+  </section>
+  <section>
+    <h1>Investing money</h1>
+    <p>You can lend your money to other people.</p>
+  </section>
+  <section>
+    <h1>Losing money</h1>
+    <p>If you spend money or invest money, sooner or later you will lose money.</p>
+    <section>
+      <h1>Poor judgement</h1>
+      <p>Usually if you lose money it's because you made a mistake.</p>
+    </section>
+  </section>
 </div>
 ```
 
@@ -120,62 +120,62 @@ outliner.buildHtml('.outline', {
 **Yield**
 
 ```html
-<div class="output">
-	<ul class="list-group level-1">
-		<li class="list-group-item"><a href="#heading-1">The Tax Book</a></li>
-		<ul class="list-group level-2">
-			<li class="list-group-item"><a href="#heading-2">Earning money</a></li>
-			<ul class="list-group level-3">
-				<li class="list-group-item"><a href="#heading-3">Getting a job</a></li>
-			</ul>
-			<li class="list-group-item"><a href="#heading-4">Spending money</a></li>
-			<ul class="list-group level-3">
-				<li class="list-group-item"><a href="#heading-5">Cheap things</a></li>
-				<li class="list-group-item"><a href="#heading-6">Expensive things</a></li>
-			</ul>
-			<li class="list-group-item"><a href="#heading-7">Investing money</a></li>
-			<li class="list-group-item"><a href="#heading-8">Losing money</a></li>
-			<ul class="list-group level-3">
-				<li class="list-group-item"><a href="#heading-9">Poor judgement</a></li>
-			</ul>
-		</ul>
-	</ul>
+<div class="outline">
+  <ul class="list-group level-1">
+    <li class="list-group-item"><a href="#heading-1">The Tax Book</a></li>
+    <ul class="list-group level-2">
+      <li class="list-group-item"><a href="#heading-2">Earning money</a></li>
+      <ul class="list-group level-3">
+        <li class="list-group-item"><a href="#heading-3">Getting a job</a></li>
+      </ul>
+      <li class="list-group-item"><a href="#heading-4">Spending money</a></li>
+      <ul class="list-group level-3">
+        <li class="list-group-item"><a href="#heading-5">Cheap things</a></li>
+        <li class="list-group-item"><a href="#heading-6">Expensive things</a></li>
+      </ul>
+      <li class="list-group-item"><a href="#heading-7">Investing money</a></li>
+      <li class="list-group-item"><a href="#heading-8">Losing money</a></li>
+      <ul class="list-group level-3">
+        <li class="list-group-item"><a href="#heading-9">Poor judgement</a></li>
+      </ul>
+    </ul>
+  </ul>
 </div>
 
 <div class="container">
-	<h1 id="heading-1">The Tax Book</h1>
-	<section>
-		<h1 id="heading-2">Earning money</h1>
-		<p>Earning money is good.</p>
-		<section>
-			<h1 id="heading-3">Getting a job</h1>
-			<p>To earn money you typically need a job.</p>
-		</section>
-	</section>
-	<section>
-		<h1 id="heading-4">Spending money</h1>
-		<p>Spending is what money is mainly used for.</p>
-		<section>
-			<h1 id="heading-5">Cheap things</h1>
-			<p>Buying cheap things often not cost-effective.</p>
-		</section>
-		<section>
-			<h1 id="heading-6">Expensive things</h1>
-			<p>The most expensive thing is often not the most cost-effective either.</p>
-		</section>
-	</section>
-	<section>
-		<h1 id="heading-7">Investing money</h1>
-		<p>You can lend your money to other people.</p>
-	</section>
-	<section>
-		<h1 id="heading-8">Losing money</h1>
-		<p>If you spend money or invest money, sooner or later you will lose money.</p>
-		<section>
-			<h1 id="heading-9">Poor judgement</h1>
-			<p>Usually if you lose money it's because you made a mistake.</p>
-		</section>
-	</section>
+  <h1 id="heading-1">The Tax Book</h1>
+  <section>
+    <h1 id="heading-2">Earning money</h1>
+    <p>Earning money is good.</p>
+    <section>
+      <h1 id="heading-3">Getting a job</h1>
+      <p>To earn money you typically need a job.</p>
+    </section>
+  </section>
+  <section>
+    <h1 id="heading-4">Spending money</h1>
+    <p>Spending is what money is mainly used for.</p>
+    <section>
+      <h1 id="heading-5">Cheap things</h1>
+      <p>Buying cheap things often not cost-effective.</p>
+    </section>
+    <section>
+      <h1 id="heading-6">Expensive things</h1>
+      <p>The most expensive thing is often not the most cost-effective either.</p>
+    </section>
+  </section>
+  <section>
+    <h1 id="heading-7">Investing money</h1>
+    <p>You can lend your money to other people.</p>
+  </section>
+  <section>
+    <h1 id="heading-8">Losing money</h1>
+    <p>If you spend money or invest money, sooner or later you will lose money.</p>
+    <section>
+      <h1 id="heading-9">Poor judgement</h1>
+      <p>Usually if you lose money it's because you made a mistake.</p>
+    </section>
+  </section>
 </div>
 ```
 
