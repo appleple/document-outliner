@@ -26,8 +26,12 @@ const domTest = (testFile, message) => {
   });
 };
 
+domTest('spec-1', 'spec-1 test.');
+domTest('spec-2', 'spec-2 test.');
+domTest('spec-3', 'spec-3 test.');
+domTest('spec-4', 'spec-4 test.');
+domTest('spec-5', 'spec-5 test.');
+domTest('spec-6', 'spec-6 test.');
 domTest('default-option', 'default option test.');
 domTest('full-option', 'full option test.');
 domTest('jquery-plugin', 'jquery plugin test.');
-
-

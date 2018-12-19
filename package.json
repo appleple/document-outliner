@@ -5,11 +5,11 @@
   "main": "lib/index.js",
   "type": "lib/index.d.ts",
   "scripts": {
-    "test": "npm run build && npm run build:lib && jest",
+    "test": "jest",
     "dev": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "build:lib": "tsc",
-    "deploy": "np --no-cleanup"
+    "deploy": "npm run build && npm run build:lib && npm run test && np --no-cleanup"
   },
   "repository": {
     "type": "git",

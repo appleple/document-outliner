@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+	<script src="../bundle/document-outliner.js"></script>
+</head>
+<body>
+
+<div class="src">
+	<section>
+		<h1>A plea from our caretakers</h1>
+		<p>Please, we beg of you, send help! We're stuck in the server room!</p>
+	</section>
+	<h1>Feathers</h1>
+	<p>Epidermal growths.</p>
+</div>
+
+<div class="test">
+	<ol class=" level-1">
+		<li class=""><a href="#anchor-1">Apples</a></li>
+		<li class=""><a href="#anchor-2">Bananas</a></li>
+		<li class=""><a href="#anchor-3">Carambola</a></li>
+	</ol>
+</div>
+
+<div class="result"></div>
+
+<script>
+  const outliner = new DocumentOutliner('.src');
+  outliner.buildHtml('.result');
+</script>
+
+</body>
+</html>
+
