@@ -5,7 +5,6 @@ type OutlineType = Outline;
 type SectionType = Section;
 type NodeType = HTMLElement | Node | ChildNode | null;
 type OptionsType = {
-  target: string | NodeListOf<HTMLElement>,
   link?: boolean,
   listType?: 'ul' | 'ol',
   listClassName?: string,

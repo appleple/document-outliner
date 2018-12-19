@@ -19,9 +19,13 @@ export default class DocumentOutliner {
   private readonly stack: Array<OutlineType> = [];
   private readonly rootNode: NodeType;
 
-  constructor(root: NodeType) {
-    this.rootNode = root;
-    DocumentOutliner.walk(root, this.enter.bind(this), this.exit.bind(this));
+  constructor(root: string | NodeType) {
+    if (typeof root === 'string') {
+      this.rootNode = document.querySelector(root);
+    } else {
+      this.rootNode = root;
+    }
+    DocumentOutliner.walk(this.rootNode, this.enter.bind(this), this.exit.bind(this));
   }
 
   public getOutlineObject(): OutlineType | boolean {
@@ -31,7 +35,7 @@ export default class DocumentOutliner {
     return this.currentOutlineTarget.getOutline();
   }
 
-  public buildHtml(options: OptionsType): void {
+  public buildHtml(target: string | NodeListOf<HTMLElement>, options: OptionsType): void {
     let html = '';
     let anchor = 1;
     const opt = Object.assign({}, {
@@ -42,7 +46,7 @@ export default class DocumentOutliner {
       itemClassName: '',
       anchorName: 'anchor-$1'
     }, options);
-    if (!opt.target) {
+    if (!target) {
       throw new TypeError('Invalid options: target empty.');
     }
     if (!/ol|ul/.test(opt.listType)) {
@@ -88,17 +92,17 @@ export default class DocumentOutliner {
     };
     output(this.currentOutlineTarget.getOutline(), 1);
 
-    if (typeof opt.target === 'string') {
-      [].forEach.call(document.querySelectorAll(opt.target), (dom: HTMLElement) => {
+    if (typeof target === 'string') {
+      [].forEach.call(document.querySelectorAll(target), (dom: HTMLElement) => {
         dom.innerHTML = html;
       });
-    } else if (opt.target instanceof NodeList) {
-      [].forEach.call(opt.target, (dom: HTMLElement) => {
+    } else if (target instanceof NodeList) {
+      [].forEach.call(target, (dom: HTMLElement) => {
         dom.innerHTML = html;
       });
     } else {
-      const target = opt.target as HTMLElement;
-      target.innerHTML = html;
+      const tmp = target as HTMLElement;
+      tmp.innerHTML = html;
     }
   }
 

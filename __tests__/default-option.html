@@ -49,8 +49,8 @@
 <div class="result"></div>
 
 <script>
-  const outliner = new DocumentOutliner(document.querySelector('.src'));
-  outliner.buildHtml({ target: document.querySelector('.result') });
+  const outliner = new DocumentOutliner('.src');
+  outliner.buildHtml('.result');
 </script>
 
 </body>

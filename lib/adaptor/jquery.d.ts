@@ -1,6 +1,6 @@
 import { OptionsType } from "../type";
 declare global {
     interface JQuery {
-        documentOutliner(options: OptionsType): JQuery;
+        documentOutliner(target: string | NodeListOf<HTMLElement>, options: OptionsType): JQuery;
     }
 }

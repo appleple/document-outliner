@@ -26,8 +26,8 @@ const domTest = (testFile, message) => {
   });
 };
 
-domTest('test', 'default option test.');
-domTest('test2', 'no link test.');
-domTest('jquery', 'jquery plugin test.');
+domTest('default-option', 'default option test.');
+domTest('full-option', 'full option test.');
+domTest('jquery-plugin', 'jquery plugin test.');
 
 

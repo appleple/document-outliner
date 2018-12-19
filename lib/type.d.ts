@@ -4,7 +4,6 @@ declare type OutlineType = Outline;
 declare type SectionType = Section;
 declare type NodeType = HTMLElement | Node | ChildNode | null;
 declare type OptionsType = {
-    target: string | NodeListOf<HTMLElement>;
     link?: boolean;
     listType?: 'ul' | 'ol';
     listClassName?: string;

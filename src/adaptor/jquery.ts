@@ -3,14 +3,14 @@ import {OptionsType} from "../type";
 
 declare global {
   interface JQuery {
-    documentOutliner(options: OptionsType): JQuery
+    documentOutliner(target: string | NodeListOf<HTMLElement>, options: OptionsType): JQuery;
   }
 }
 
 (($) => {
-  $.fn.documentOutliner = function(options) {
+  $.fn.documentOutliner = function(target, options) {
     const outliner = new DocumentOutliner(this.get(0));
-    outliner.buildHtml(options);
+    outliner.buildHtml(target, options);
     return this;
   };
 })(jQuery);
