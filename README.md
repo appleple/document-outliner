@@ -38,14 +38,14 @@ npm install document-outliner
 import DocumentOutliner from 'document-outliner';
 
 const outliner = new DocumentOutliner('.js-outline-src');
-outliner.buildHtml('.js-outline-output');
+outliner.buildHtml('.js-outline-output', {listType: 'ul'});
 ```
 
 ### jQuery
 
 ```javascript
 $(function () {
-  $('.container').documentOutliner('.output');
+  $('.container').documentOutliner('.output', {link: false});
 });
 ```
 
