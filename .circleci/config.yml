@@ -16,14 +16,14 @@ jobs:
         keys:
         - v1-dependencies-{{ checksum "package.json" }}
     - run:
-      name: Install npm pacakges
-      command: npm install
+        name: Install npm pacakges
+        command: npm install
     - run:
-      name: Transpile typescript to es5 & Module bundling
-      command: npm run build
+        name: Transpile typescript to es5 & Module bundling
+        command: npm run build
     - run:
-      name: Transpile typescript to es5
-      command: 'npm run build:lib'
+        name: Transpile typescript to es5
+        command: 'npm run build:lib'
     - save_cache:
         key: v1-dependencies-{{ checksum "package.json" }}
         paths:
@@ -39,8 +39,8 @@ jobs:
     - attach_workspace:
         at: .
     - run:
-      name: Test
-      command: npm run test
+        name: Test
+        command: npm run test
   # Deploy (Only release branch.)
   deploy:
     <<: *container_config
@@ -48,8 +48,8 @@ jobs:
     - attach_workspace:
         at: .
     - run:
-      name: Deploy npm
-      command: npm run deploy
+        name: Deploy npm
+        command: npm run deploy
 # Workflow
 workflows:
   version: 2
