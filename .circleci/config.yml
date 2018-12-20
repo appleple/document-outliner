@@ -15,6 +15,7 @@ jobs:
     - restore_cache:
         keys:
         - v1-dependencies-{{ checksum "package.json" }}
+        - v1-dependencies- # fallback to using the latest cache if no exact match is found
     - run:
         name: Install npm pacakges
         command: npm install
@@ -38,6 +39,9 @@ jobs:
     steps:
     - attach_workspace:
         at: .
+    - run:
+        name: Workaround for GoogleChrome/puppeteer#290
+        command: 'sh .circleci/setup_puppeteer.sh'
     - run:
         name: Test
         command: npm run test
