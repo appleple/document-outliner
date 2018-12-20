@@ -53,6 +53,7 @@
       }
     }
 
+
     .unim-logo {
       display: flex;
       justify-content: center;
@@ -63,6 +64,12 @@
       border-radius: 16px;
       margin-left: auto;
       margin-right: auto;
+    }
+
+    .unim-logo:before {
+      color: rgb(0, 102, 150);
+      font-size: 6rem;
+      line-height: 1;
     }
 
     .unim-logo img {
@@ -83,6 +90,7 @@
       .hero-title {
         font-size: 2rem;
       }
+
       .button {
         margin-bottom: 10px;
       }
@@ -107,34 +115,38 @@
       background-color: transparent;
     }
 
-    .js-container {
-      background-color: #f6f8fa;
-      padding: 10px;
-      border-radius: 3px;
-      font-size: 16px;
+    .section[style^=background-image]:before {
+      background-color: rgba(0, 102, 150, 0.8);
     }
 
-    .js-container h1 {
-      border-bottom: 1px solid #eaecef;
-      padding-bottom: .3em;
-      font-weight: 600;
-      line-height: 1.25;
-      margin-bottom: 16px;
+    .hero[style^=background-image]:before {
+      background-color: rgba(0, 102, 150, 0.8);
     }
 
-    .js-container h2 {
-      font-weight: 600;
-      line-height: 1.25;
-      margin-bottom: 16px;
-      margin-top: 24px;
-      font-size: 1.5em
+    .button:not(.is-cross):not(.is-burger):not(.is-ghost) {
+      color: rgb(0, 102, 150);
     }
 
-    .js-container h3 {
-      font-weight: 600;
-      line-height: 1.25;
-      margin-bottom: 16px;
-      margin-top: 24px;
+    .hero .header.is-change-color .logo, .header.is-change-color .logo {
+      color: rgb(0, 102, 150);
+    }
+
+    .hero[style^=background-image] .header.is-change-color .menu a:not(.button), .header.is-change-color .menu a:not(.button) {
+      color: rgb(0, 102, 150);
+    }
+
+    .hero[style^=background-image] .header.is-change-color .button.is-ghost, .header.is-change-color .button.is-ghost {
+      border-color: rgb(0, 102, 150);
+      color: rgb(0, 102, 150);
+    }
+
+    ::selection {
+      background-color: rgb(0, 102, 150);
+    }
+
+    .js-textarea {
+      width: 100%;
+      min-height: 330px;
     }
 
     .js-outline {
@@ -153,8 +165,8 @@
       <div class="inner is-medium">
         <h1 class="logo">DocumentOutliner</h1>
         <div class="menu is-hide-small">
-          <a href="#quick-start">Quick Start</a>
           <a href="#demo">Demo</a>
+          <a href="#quick-start">Quick Start</a>
           <a href="https://github.com/appleple/document-outliner">GitHub</a>
           <a href="https://github.com/appleple/document-outliner/archive/master.zip" class="button is-small is-ghost">Download</a>
         </div>
@@ -172,7 +184,7 @@
             </p>
           </div>
           <div class="grid-cell is-col-fit unim-logo-box">
-            <div class="unim-logo is-shadow">D</div>
+            <div class="unim-logo is-shadow fa fa-list-ul">D</div>
           </div>
         </div>
       </div>
@@ -180,9 +192,40 @@
   </div>
   <main class="main">
     <div class="content">
+
       <section class="section">
         <div class="inner">
-          <h2 id="quick-start">Quick start</h2>
+          <h2 id="demo" class="section-title">Demo</h2>
+          <div class="grid is-gutter is-col-2">
+            <div class="grid-cell">
+              <textarea class="js-textarea textarea"></textarea>
+            </div>
+            <div class="grid-cell">
+              <div class="js-outline"></div>
+              <div class="js-container" style="display: none;"><h1>The Tax Book</h1>
+<h2>Earning money</h2>
+<p>Earning money is good.</p>
+<h3>Getting a job</h3>
+<p>To earn money you typically need a job.</p>
+<h2>Spending money</h2>
+<p>Spending is what money is mainly used for.</p>
+<h3>Cheap things</h3>
+<p>Buying cheap things often not cost-effective.</p>
+<h3>Expensive things</h3>
+<p>The most expensive thing is often not the most cost-effective either.</p>
+<h2>Investing money</h2>
+<p>You can lend your money to other people.</p>
+<h2>Losing money</h2>
+<p>If you spend money or invest money, sooner or later you will lose money.
+<h3>Poor judgement</h3>
+<p>Usually if you lose money it's because you made a mistake.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="inner">
+          <h2 id="quick-start" class="section-title">Quick start</h2>
           <h3>Using CDN</h3>
           <p>You can easily start by using CDN.</p>
           <p>Add the following description in the
@@ -203,30 +246,6 @@
       &lt;p&gt;To earn money you typically need a job.&lt;/p&gt;
     &lt;/section&gt;
   &lt;/section&gt;
-  &lt;section&gt;
-    &lt;h1&gt;Spending money&lt;/h1&gt;
-    &lt;p&gt;Spending is what money is mainly used for.&lt;/p&gt;
-    &lt;section&gt;
-      &lt;h1&gt;Cheap things&lt;/h1&gt;
-      &lt;p&gt;Buying cheap things often not cost-effective.&lt;/p&gt;
-    &lt;/section&gt;
-    &lt;section&gt;
-      &lt;h1&gt;Expensive things&lt;/h1&gt;
-      &lt;p&gt;The most expensive thing is often not the most cost-effective either.&lt;/p&gt;
-    &lt;/section&gt;
-  &lt;/section&gt;
-  &lt;section&gt;
-    &lt;h1&gt;Investing money&lt;/h1&gt;
-    &lt;p&gt;You can lend your money to other people.&lt;/p&gt;
-  &lt;/section&gt;
-  &lt;section&gt;
-    &lt;h1&gt;Losing money&lt;/h1&gt;
-    &lt;p&gt;If you spend money or invest money, sooner or later you will lose money.&lt;/p&gt;
-    &lt;section&gt;
-      &lt;h1&gt;Poor judgement&lt;/h1&gt;
-      &lt;p&gt;Usually if you lose money it's because you made a mistake.&lt;/p&gt;
-    &lt;/section&gt;
-  &lt;/section&gt;
 &lt;/div&gt;</code></pre>
           <p>Write the following script</p>
           <pre><code class="js">new DocumentOutliner('.container');
@@ -237,71 +256,25 @@ outliner.makeList('.outline', {
   itemClassName: 'list-group-item',
   anchorName: 'heading-$1'
 });</code></pre>
-
-          <h3>Yield</h3>
-          <pre><code class="html">&lt;div class="outline"&gt;
-  &lt;ul class="list-group level-1"&gt;
-    &lt;li class="list-group-item"&gt;&lt;a href="#heading-1"&gt;The Tax Book&lt;/a&gt;&lt;/li&gt;
-    &lt;ul class="list-group level-2"&gt;
-      &lt;li class="list-group-item"&gt;&lt;a href="#heading-2"&gt;Earning money&lt;/a&gt;&lt;/li&gt;
-      &lt;ul class="list-group level-3"&gt;
-        &lt;li class="list-group-item"&gt;&lt;a href="#heading-3"&gt;Getting a job&lt;/a&gt;&lt;/li&gt;
-      &lt;/ul&gt;
-      &lt;li class="list-group-item"&gt;&lt;a href="#heading-4"&gt;Spending money&lt;/a&gt;&lt;/li&gt;
-      &lt;ul class="list-group level-3"&gt;
-        &lt;li class="list-group-item"&gt;&lt;a href="#heading-5"&gt;Cheap things&lt;/a&gt;&lt;/li&gt;
-        &lt;li class="list-group-item"&gt;&lt;a href="#heading-6"&gt;Expensive things&lt;/a&gt;&lt;/li&gt;
-      &lt;/ul&gt;
-      &lt;li class="list-group-item"&gt;&lt;a href="#heading-7"&gt;Investing money&lt;/a&gt;&lt;/li&gt;
-      &lt;li class="list-group-item"&gt;&lt;a href="#heading-8"&gt;Losing money&lt;/a&gt;&lt;/li&gt;
-      &lt;ul class="list-group level-3"&gt;
-        &lt;li class="list-group-item"&gt;&lt;a href="#heading-9"&gt;Poor judgement&lt;/a&gt;&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/ul&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;
-
-&lt;div class="container"&gt;
-  &lt;h1 id="heading-1"&gt;The Tax Book&lt;/h1&gt;
-  &lt;section&gt;
-    &lt;h1 id="heading-2"&gt;Earning money&lt;/h1&gt;
-    &lt;p&gt;Earning money is good.&lt;/p&gt;
-    &lt;section&gt;
-      &lt;h1 id="heading-3"&gt;Getting a job&lt;/h1&gt;
-      &lt;p&gt;To earn money you typically need a job.&lt;/p&gt;
-    &lt;/section&gt;
-  &lt;/section&gt;
-  &lt;section&gt;
-    &lt;h1 id="heading-4"&gt;Spending money&lt;/h1&gt;
-    &lt;p&gt;Spending is what money is mainly used for.&lt;/p&gt;
-    &lt;section&gt;
-      &lt;h1 id="heading-5"&gt;Cheap things&lt;/h1&gt;
-      &lt;p&gt;Buying cheap things often not cost-effective.&lt;/p&gt;
-    &lt;/section&gt;
-    &lt;section&gt;
-      &lt;h1 id="heading-6"&gt;Expensive things&lt;/h1&gt;
-      &lt;p&gt;The most expensive thing is often not the most cost-effective either.&lt;/p&gt;
-    &lt;/section&gt;
-  &lt;/section&gt;
-  &lt;section&gt;
-    &lt;h1 id="heading-7"&gt;Investing money&lt;/h1&gt;
-    &lt;p&gt;You can lend your money to other people.&lt;/p&gt;
-  &lt;/section&gt;
-  &lt;section&gt;
-    &lt;h1 id="heading-8"&gt;Losing money&lt;/h1&gt;
-    &lt;p&gt;If you spend money or invest money, sooner or later you will lose money.&lt;/p&gt;
-    &lt;section&gt;
-      &lt;h1 id="heading-9"&gt;Poor judgement&lt;/h1&gt;
-      &lt;p&gt;Usually if you lose money it's because you made a mistake.&lt;/p&gt;
-    &lt;/section&gt;
-  &lt;/section&gt;
-&lt;/div&gt;</code></pre>
+          <h3>If you want to use it with jQuery</h3>
+          <p>Load the following script</p>
+          <pre><code class="html">&lt;script src="https://unpkg.com/document-outliner@latest/bundle/document-outliner.js"&gt;&lt;/script&gt;</code></pre>
+          <p>Execute!</p>
+          <pre><code class="js">$(function () {
+  $('.container').documentOutliner('.output', {
+    link: true,
+    listType: 'ul',
+    listClassName: 'list-group',
+    itemClassName: 'list-group-item',
+    anchorName: 'heading-$1' 
+  });
+});</code></pre>
         </div>
       </section>
 
       <section class="section">
         <div class="inner">
-          <h2 id="options">Options</h2>
+          <h2 id="options" class="section-title">Options</h2>
           <p>Some options are available when making new instances like below.</p>
           <pre><code class="js">const outliner = new DocumentOutliner('.container');
 outliner.makeList('.outline', {
@@ -312,7 +285,7 @@ outliner.makeList('.outline', {
   anchorName: 'heading-$1'
 });</code></pre>
           <p>For your reference, below is the list of the options available.</p>
-          <table class="table">
+          <table class="table is-zebra" style="width: 100%;">
             <tr>
               <th style="text-align:left;">Name</th>
               <th style="text-align:left;">Default</th>
@@ -359,32 +332,6 @@ outliner.makeList('.outline', {
               <td>limit on number of level</td>
             </tr>
           </table>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="inner">
-          <h2 id="demo">Demo</h2>
-          <div class="js-outline"></div>
-          <div class="js-container">
-              <h1>The Tax Book</h1>
-              <h2>Earning money</h2>
-              <p>Earning money is good.</p>
-              <h3>Getting a job</h3>
-              <p>To earn money you typically need a job.</p>
-              <h2>Spending money</h2>
-              <p>Spending is what money is mainly used for.</p>
-              <h3>Cheap things</h3>
-              <p>Buying cheap things often not cost-effective.</p>
-              <h3>Expensive things</h3>
-              <p>The most expensive thing is often not the most cost-effective either.</p>
-              <h2>Investing money</h2>
-              <p>You can lend your money to other people.</p>
-              <h2>Losing money</h2>
-              <p>If you spend money or invest money, sooner or later you will lose money.
-              <h3>Poor judgement</h3>
-              <p>Usually if you lose money it's because you made a mistake.</p>
-          </div>
         </div>
       </section>
 
@@ -445,14 +392,24 @@ outliner.makeList('.outline', {
   <script src="https://kokushin.github.io/unim/dist/js/unim.js"></script>
   <script src="https://unpkg.com/document-outliner@latest/bundle/document-outliner.js"></script>
   <script>
-    var outliner = new DocumentOutliner('.js-container');
-    outliner.makeList('.js-outline', {
-      link: true,
-      listType: 'ul',
-      listClassName: 'list-group',
-      itemClassName: 'list-group-item',
-      anchorName: 'heading-$1'
-    });
+    var container = document.querySelector('.js-container');
+    var textarea = document.querySelector('.js-textarea');
+    textarea.value = container.innerHTML;
+    var makelist = function () {
+      container.innerHTML = textarea.value;
+      var outliner = new DocumentOutliner(container);
+      outliner.makeList('.js-outline', {
+        link: true,
+        listType: 'ul',
+        listClassName: 'list-group',
+        itemClassName: 'list-group-item',
+        anchorName: 'heading-$1'
+      });
+    }
+    textarea.addEventListener('change', makelist);
+    textarea.addEventListener('input', makelist);
+    textarea.addEventListener('paste', makelist);
+    makelist();
   </script>
 </body>
 
