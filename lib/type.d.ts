@@ -3,9 +3,10 @@ import Section from "./section";
 declare type OutlineType = Outline;
 declare type SectionType = Section;
 declare type NodeType = HTMLElement | Node | ChildNode | null;
+declare type ListOptionType = 'ul' | 'ol';
 declare type ConfigType = {
     link: boolean;
-    listType: 'ul' | 'ol';
+    listType: ListOptionType | Array<ListOptionType>;
     listClassName: string;
     itemClassName: string;
     linkClassName: string;

@@ -6,6 +6,7 @@ export default class MakeList {
     private html;
     constructor(outline: OutlineType, options: OptionsType);
     getHtml(): string;
+    protected getListType(level: number): string;
     protected build(outline: OutlineType | SectionType, level: number): void;
     protected buildSections(sections: Array<SectionType>, hasHeading: boolean, level: number): void;
     protected buildLink(heading: HTMLElement): string;
