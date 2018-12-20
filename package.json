@@ -1,6 +1,6 @@
 {
   "name": "document-outliner",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "HTML5 Outliner.",
   "main": "lib/index.js",
   "type": "lib/index.d.ts",
