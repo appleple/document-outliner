@@ -35,7 +35,7 @@ export default class DocumentOutliner {
     return this.currentOutlineTarget.getOutline();
   }
 
-  public buildHtml(target: string | NodeListOf<HTMLElement>, options: OptionsType): void {
+  public makeList(target: string | NodeListOf<HTMLElement>, options: OptionsType): void {
     let html = '';
     let anchor = 1;
     const opt = Object.assign({}, {
@@ -71,7 +71,7 @@ export default class DocumentOutliner {
       }
       outline.getSections().forEach((section) => {
         const heading = section.getHeading() as HTMLElement;
-        if (heading) {
+        if (isHeadingContent(heading)) {
           if (opt.link) {
             const anchorName = opt.anchorName.replace(/\$1/, anchor.toString());
             const anchorClassName = opt.linkClassName ? ` class="${opt.linkClassName}"` : '';
@@ -151,6 +151,7 @@ export default class DocumentOutliner {
         // 1. If the current section has no heading,
         if (this.currentSection && !this.currentSection.getHeading()) {
           // create an implied heading and let that be the heading for the current section.
+          this.currentSection.setHeading(new Text('No title.'))
           this.currentSection.setImplied(true);
         }
         // Push current outline target onto the stack.
@@ -163,7 +164,7 @@ export default class DocumentOutliner {
       this.currentSection = new Section(node);
       // 5. Let there be a new outline for the new current outline target,
       //    initialized with just the new current section as the only section in the outline.
-      this.currentOutlineTarget.setOutline( new Outline(this.currentOutlineTarget.getNode(), this.currentSection));
+      this.currentOutlineTarget.setOutline(new Outline(this.currentOutlineTarget.getNode(), this.currentSection));
       return;
     }
     // When entering a sectioning root element
@@ -254,6 +255,7 @@ export default class DocumentOutliner {
     if (isSectioningContent(node) && this.stack.length > 0) {
       // 1. If the current section has no heading, create an implied heading and let that be the heading for the current section.
       if (this.currentSection && !this.currentSection.getHeading()) {
+        this.currentSection.setHeading(new Text('No title.'));
         this.currentSection.setImplied(true);
       }
       const tmpOutline = this.currentOutlineTarget as OutlineType;
@@ -273,6 +275,7 @@ export default class DocumentOutliner {
     if ((isSectioningRoot(node) || node === this.rootNode) && this.stack.length > 0) {
       // 1. If the current section has no heading, create an implied heading and let that be the heading for the current section.
       if (this.currentSection && !this.currentSection.getHeading()) {
+        this.currentSection.setHeading(new Text('No title.'));
         this.currentSection.setImplied(true);
       }
       // 2. Let current section be current outline target's parent section.
@@ -287,9 +290,10 @@ export default class DocumentOutliner {
     // The current outline target is the element being exited,
     // and it is the sectioning content element or a sectioning root element
     // at the root of the subtree for which an outline is being generated.
-    if (isSectioningRoot(node) || isSectioningContent(node)) {
+    if (isSectioningRoot(node) || node === this.rootNode || isSectioningContent(node)) {
       // If the current section has no heading, create an implied heading and let that be the heading for the current section.
       if (this.currentSection && !this.currentSection.getHeading()) {
+        this.currentSection.setHeading(new Text('No title.'));
         this.currentSection.setImplied(true);
       }
       // Skip to the next step in the overall set of steps. (The walk is over.)

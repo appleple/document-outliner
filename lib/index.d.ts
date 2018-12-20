@@ -9,7 +9,7 @@ export default class DocumentOutliner {
     private readonly rootNode;
     constructor(root: string | NodeType);
     getOutlineObject(): OutlineType | boolean;
-    buildHtml(target: string | NodeListOf<HTMLElement>, options: OptionsType): void;
+    makeList(target: string | NodeListOf<HTMLElement>, options: OptionsType): void;
     protected static walk(root: NodeType, enter: (node: NodeType) => void, exit: (node: NodeType) => void): void;
     protected enter(node: NodeType): void;
     protected exit(node: NodeType): void;

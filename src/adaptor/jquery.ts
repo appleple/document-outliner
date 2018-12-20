@@ -10,7 +10,7 @@ declare global {
 (($) => {
   $.fn.documentOutliner = function(target, options) {
     const outliner = new DocumentOutliner(this.get(0));
-    outliner.buildHtml(target, options);
+    outliner.makeList(target, options);
     return this;
   };
 })(jQuery);

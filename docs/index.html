@@ -230,7 +230,7 @@
 &lt;/div&gt;</code></pre>
           <p>Write the following script</p>
           <pre><code class="js">new DocumentOutliner('.container');
-outliner.buildHtml('.outline', {
+outliner.makeList('.outline', {
   link: true,
   listType: 'ul',
   listClassName: 'list-group',
@@ -304,7 +304,7 @@ outliner.buildHtml('.outline', {
           <h2 id="options">Options</h2>
           <p>Some options are available when making new instances like below.</p>
           <pre><code class="js">const outliner = new DocumentOutliner('.container');
-outliner.buildHtml('.outline', {
+outliner.makeList('.outline', {
   link: true,
   listType: 'ul',
   listClassName: 'list-group',
@@ -446,7 +446,7 @@ outliner.buildHtml('.outline', {
   <script src="https://unpkg.com/document-outliner@latest/bundle/document-outliner.js"></script>
   <script>
     var outliner = new DocumentOutliner('.js-container');
-    outliner.buildHtml('.js-outline', {
+    outliner.makeList('.js-outline', {
       link: true,
       listType: 'ul',
       listClassName: 'list-group',

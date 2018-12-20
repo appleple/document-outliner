@@ -48,7 +48,7 @@ yarn add document-outliner
 import DocumentOutliner from 'document-outliner';
 
 const outliner = new DocumentOutliner('.js-outline-src');
-outliner.buildHtml('.js-outline-output', {listType: 'ul'});
+outliner.makeList('.js-outline-output', {listType: 'ul'});
 ```
 
 ### jQuery
@@ -119,7 +119,7 @@ $(function () {
 
 ```javascript
 const outliner = new DocumentOutliner('.container');
-outliner.buildHtml('.outline', {
+outliner.makeList('.outline', {
   link: true,
   listType: 'ul',
   listClassName: 'list-group',

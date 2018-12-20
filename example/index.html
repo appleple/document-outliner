@@ -9,25 +9,16 @@
 <div class="output"></div>
 
 <div class="container">
-  <h1>Ray's blog</h1>
-  <article>
-    <header>
-      <nav>
-        <a href="?t=-1d">Yesterday</a>;
-        <a href="?t=-7d">Last week</a>;
-        <a href="?t=-1m">Last month</a>
-      </nav>
-      <h1>We're adopting a child!</h1>
-    </header>
-    <p>As of today, Janine and I have signed the papers to become
-      the proud parents of baby Diane! We've been looking forward to
-      this day for weeks.</p>
-  </article>
+  <section>
+    <h1>A plea from our caretakers</h1>
+    <p>Please, we beg of you, send help! We're stuck in the server room!</p>
+  </section>
+  <h1>Feathers</h1>
 </div>
 
 <script>
-  const outliner = new DocumentOutliner('.container');
-  outliner.buildHtml('.output');
+  const outliner = new DocumentOutliner('body');
+  outliner.makeList('.output');
 
   const obj = outliner.getOutlineObject();
   console.log(obj);
