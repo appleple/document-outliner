@@ -45,15 +45,6 @@ jobs:
     - run:
         name: Test
         command: npm run test
-  # Deploy (Only release branch.)
-  deploy:
-    <<: *container_config
-    steps:
-    - attach_workspace:
-        at: .
-    - run:
-        name: Deploy to npm
-        command: 'npm run deploy:patch'
 # Workflow
 workflows:
   version: 2
@@ -63,9 +54,6 @@ workflows:
     - test:
         requires:
         - build
-    - deploy:
-        requires:
-        - test
         filters:
           branches:
             only:
