@@ -1,4 +1,8 @@
 # document-outliner
+[![npm version](https://badge.fury.io/js/document-outliner.svg)](https://badge.fury.io/js/document-outliner)
+[![CircleCI](https://circleci.com/gh/appleple/document-outliner/tree/master.svg?style=shield)](https://circleci.com/gh/appleple/document-outliner/tree/master)
+[![npm download](http://img.shields.io/npm/dm/document-outliner.svg)](https://www.npmjs.com/package/document-outliner)
+[![GitHub license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://raw.githubusercontent.com/appleple/document-outliner/master/LICENSE)
 
 A utility to make ol/ul list by using html5 outline algorithm.
 
