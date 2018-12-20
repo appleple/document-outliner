@@ -20,14 +20,29 @@ export default class MakeList {
   }
 
   public getHtml(): string {
-    if (!/ol|ul/.test(this.options.listType)) {
-      throw new TypeError("Invalid options: linkType be ul or ol.");
-    }
     if (!this.outline) {
       throw new Error("No sectioning contents.");
     }
     this.build(this.outline.getOutline(), 1);
     return this.html;
+  }
+
+  protected getListType(level: number): string {
+    let defaultType = 'ol';
+    if (typeof this.options.listType === 'string') {
+      if (/ol|ul/.test(this.options.listType)) {
+        return this.options.listType;
+      }
+    } else if (Array.isArray(this.options.listType)) {
+      if (/ol|ul/.test(this.options.listType[0])) {
+        defaultType =  this.options.listType[0];
+      }
+      const type = this.options.listType[level];
+      if (/ol|ul/.test(type)) {
+        return type;
+      }
+    }
+    return defaultType;
   }
 
   protected build(outline: OutlineType | SectionType, level: number): void {
@@ -37,11 +52,11 @@ export default class MakeList {
     const hasHeading = this.hasHeading(outline.getSections());
     if (hasHeading) {
       const listClassName = this.options.listClassName ? ` ${this.options.linkClassName}` : '';
-      this.html += `<${this.options.listType} class="level-${level}${listClassName}">`;
+      this.html += `<${this.getListType(level - 1)} class="level-${level}${listClassName}">`;
     }
     this.buildSections(outline.getSections(), hasHeading, level);
     if (hasHeading) {
-      this.html += `</${this.options.listType}>`;
+      this.html += `</${this.getListType(level)}>`;
     }
   }
 
@@ -73,8 +88,8 @@ export default class MakeList {
       anchorName = heading.id;
     } else {
       heading.id = anchorName;
-      this.anchor++;
     }
+    this.anchor++;
     return `<a href="#${anchorName}"${anchorClassName}>${heading.innerText}</a>`;
   }
 

@@ -4,9 +4,10 @@ import Section from "./section";
 type OutlineType = Outline;
 type SectionType = Section;
 type NodeType = HTMLElement | Node | ChildNode | null;
+type ListOptionType = 'ul' | 'ol';
 type ConfigType = {
   link: boolean,
-  listType: 'ul' | 'ol',
+  listType: ListOptionType | Array<ListOptionType>,
   listClassName: string,
   itemClassName: string,
   linkClassName: string,
