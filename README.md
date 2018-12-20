@@ -79,7 +79,7 @@ $(function () {
 <div class="outline"></div>
 
 <div class="container">
-  <h1>The Tax Book</h1>
+  <h1 id="the-tax-book">The Tax Book</h1>
   <section>
     <h1>Earning money</h1>
     <p>Earning money is good.</p>
@@ -89,7 +89,7 @@ $(function () {
     </section>
   </section>
   <section>
-    <h1>Spending money</h1>
+    <h1 id="spending-money">Spending money</h1>
     <p>Spending is what money is mainly used for.</p>
     <section>
       <h1>Cheap things</h1>
@@ -101,11 +101,11 @@ $(function () {
     </section>
   </section>
   <section>
-    <h1>Investing money</h1>
+    <h1 id="investing-money">Investing money</h1>
     <p>You can lend your money to other people.</p>
   </section>
   <section>
-    <h1>Losing money</h1>
+    <h1 id="losing-money">Losing money</h1>
     <p>If you spend money or invest money, sooner or later you will lose money.</p>
     <section>
       <h1>Poor judgement</h1>
@@ -132,29 +132,34 @@ outliner.makeList('.outline', {
 
 ```html
 <div class="outline">
-  <ul class="list-group level-1">
-    <li class="list-group-item"><a href="#heading-1">The Tax Book</a></li>
-    <ul class="list-group level-2">
-      <li class="list-group-item"><a href="#heading-2">Earning money</a></li>
-      <ul class="list-group level-3">
-        <li class="list-group-item"><a href="#heading-3">Getting a job</a></li>
+  <ul class="level-1 scrollTo">
+    <li class="list-group-item"><a href="#the-tax-book" class="scrollTo">The Tax Book</a>
+      <ul class="level-2 scrollTo">
+        <li class="list-group-item"><a href="#heading-2" class="scrollTo">Earning money</a>
+          <ul class="level-3 scrollTo">
+            <li class="list-group-item"><a href="#heading-3" class="scrollTo">Getting a job</a></li>
+          </ul>
+        </li>
+        <li class="list-group-item"><a href="#spending-money" class="scrollTo">Spending money</a>
+          <ul class="level-3 scrollTo">
+            <li class="list-group-item"><a href="#heading-5" class="scrollTo">Cheap things</a></li>
+            <li class="list-group-item"><a href="#heading-6" class="scrollTo">Expensive things</a></li>
+          </ul>
+        </li>
+        <li class="list-group-item"><a href="#investing-money" class="scrollTo">Investing money</a></li>
+        <li class="list-group-item"><a href="#losing-money" class="scrollTo">Losing money</a>
+          <ul class="level-3 scrollTo">
+            <li class="list-group-item"><a href="#heading-9" class="scrollTo">Poor judgement</a></li>
+          </ul>
+  
+        </li>
       </ul>
-      <li class="list-group-item"><a href="#heading-4">Spending money</a></li>
-      <ul class="list-group level-3">
-        <li class="list-group-item"><a href="#heading-5">Cheap things</a></li>
-        <li class="list-group-item"><a href="#heading-6">Expensive things</a></li>
-      </ul>
-      <li class="list-group-item"><a href="#heading-7">Investing money</a></li>
-      <li class="list-group-item"><a href="#heading-8">Losing money</a></li>
-      <ul class="list-group level-3">
-        <li class="list-group-item"><a href="#heading-9">Poor judgement</a></li>
-      </ul>
-    </ul>
+    </li>
   </ul>
 </div>
 
 <div class="container">
-  <h1 id="heading-1">The Tax Book</h1>
+  <h1 id="the-tax-book">The Tax Book</h1>
   <section>
     <h1 id="heading-2">Earning money</h1>
     <p>Earning money is good.</p>
@@ -164,7 +169,7 @@ outliner.makeList('.outline', {
     </section>
   </section>
   <section>
-    <h1 id="heading-4">Spending money</h1>
+    <h1 id="spending-money">Spending money</h1>
     <p>Spending is what money is mainly used for.</p>
     <section>
       <h1 id="heading-5">Cheap things</h1>
@@ -176,11 +181,11 @@ outliner.makeList('.outline', {
     </section>
   </section>
   <section>
-    <h1 id="heading-7">Investing money</h1>
+    <h1 id="investing-money">Investing money</h1>
     <p>You can lend your money to other people.</p>
   </section>
   <section>
-    <h1 id="heading-8">Losing money</h1>
+    <h1 id="losing-money">Losing money</h1>
     <p>If you spend money or invest money, sooner or later you will lose money.</p>
     <section>
       <h1 id="heading-9">Poor judgement</h1>
