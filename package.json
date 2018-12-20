@@ -9,7 +9,8 @@
     "dev": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "build:lib": "tsc",
-    "deploy": "np --no-cleanup"
+    "deploy": "np --no-cleanup",
+    "deploy:patch": "np patch --nocleanup"
   },
   "repository": {
     "type": "git",

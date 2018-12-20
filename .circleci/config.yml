@@ -52,8 +52,8 @@ jobs:
     - attach_workspace:
         at: .
     - run:
-        name: Deploy npm
-        command: npm run deploy
+        name: Deploy to npm
+        command: 'npm run deploy:patch'
 # Workflow
 workflows:
   version: 2
