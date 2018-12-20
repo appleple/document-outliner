@@ -44,7 +44,7 @@ export default class DocumentOutliner {
       levelLimit: 99,
       listClassName: '',
       itemClassName: '',
-      anchorName: 'anchor-$1'
+      anchorName: 'header-$1'
     }, options);
     if (!target) {
       throw new TypeError('Invalid options: target empty.');
@@ -67,25 +67,34 @@ export default class DocumentOutliner {
         }
       });
       if (!noHeading) {
-        html += `<${opt.listType} class="${opt.listClassName} level-${level}">`;
+        const listClassName = opt.listClassName ? ` ${opt.linkClassName}` : '';
+        html += `<${opt.listType} class="level-${level}${listClassName}">`;
       }
       outline.getSections().forEach((section) => {
         const heading = section.getHeading() as HTMLElement;
         if (isHeadingContent(heading)) {
+          const itemClassName = opt.itemClassName ? ` class="${opt.itemClassName}"` : '';
           if (opt.link) {
-            const anchorName = opt.anchorName.replace(/\$1/, anchor.toString());
             const anchorClassName = opt.linkClassName ? ` class="${opt.linkClassName}"` : '';
-            heading.id = anchorName;
-            html += `<li class="${opt.itemClassName}"><a href="#${anchorName}"${anchorClassName}>${heading.innerText}</a></li>`;
+            let anchorName = opt.anchorName.replace(/\$1/, anchor.toString());
+            if (heading.id) {
+              anchorName = heading.id;
+            } else {
+              heading.id = anchorName;
+            }
+            html += `<li${itemClassName}><a href="#${anchorName}"${anchorClassName}>${heading.innerText}</a>`;
           } else {
-            html += `<li class="${opt.itemClassName}">${heading.innerText}</li>`;
+            html += `<li${itemClassName}>${heading.innerText}`;
           }
           anchor++;
+        } else {
+          html += '<li>';
         }
         if (section.getSections()) {
           const nextLevel = noHeading ? level : level + 1;
           output(section, nextLevel);
         }
+        html += '</li>';
       });
       if (!noHeading) {
         html += `</${opt.listType}>`;
