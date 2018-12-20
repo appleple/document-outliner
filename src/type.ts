@@ -7,7 +7,7 @@ type NodeType = HTMLElement | Node | ChildNode | null;
 type ListOptionType = 'ul' | 'ol';
 type ConfigType = {
   link: boolean,
-  listType: ListOptionType | Array<ListOptionType>,
+  listType: ListOptionType,
   listClassName: string,
   itemClassName: string,
   linkClassName: string,

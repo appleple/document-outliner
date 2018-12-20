@@ -6,7 +6,7 @@ declare type NodeType = HTMLElement | Node | ChildNode | null;
 declare type ListOptionType = 'ul' | 'ol';
 declare type ConfigType = {
     link: boolean;
-    listType: ListOptionType | Array<ListOptionType>;
+    listType: ListOptionType;
     listClassName: string;
     itemClassName: string;
     linkClassName: string;

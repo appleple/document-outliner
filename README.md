@@ -64,7 +64,7 @@ $(function () {
 | name | description | default |
 |:---|:---|:---|
 | link | create HTML anchor link | true |
-| listType | HTML list type ('ol'&#124;'ul'&#124;[]) | 'ol' |
+| listType | HTML list type ('ol'&#124;'ul') | 'ol' |
 | listClassName | ol/ul class name | '' |
 | itemClassName | li class name | '' |
 | linkClassName | link class name | '' |
