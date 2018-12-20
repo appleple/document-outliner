@@ -1,0 +1,69 @@
+version: 2
+references:
+  container_config: &container_config
+    docker:
+    - image: circleci/node:8.14.0-jessie
+    working_directory: ~/document-outliner
+    parallelism: 1
+# Jobs
+jobs:
+  # Build
+  build:
+    <<: *container_config
+    steps:
+    - checkout
+    - restore_cache:
+        keys:
+        - v1-dependencies-{{ checksum "package.json" }}
+    - run:
+      name: Install npm pacakges
+      command: npm install
+    - run:
+      name: Transpile typescript to es5 & Module bundling
+      command: npm run build
+    - run:
+      name: Transpile typescript to es5
+      command: npm run build:lib
+    - save_cache:
+        key: v1-dependencies-{{ checksum "package.json" }}
+        paths:
+        - node_modules
+    - persist_to_workspace:
+        root: .
+        paths:
+        - .
+  # Test
+  test:
+    <<: *container_config
+    steps:
+    - attach_workspace:
+        at: .
+    - run:
+      name: Test
+      command: npm run test
+  # Deploy (Only release branch.)
+  deploy:
+    <<: *container_config
+    steps:
+    - attach_workspace:
+        at: .
+    - run:
+      name: Deploy npm
+      command: npm run deploy
+# Workflow
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+    - build:
+    - test:
+        requires:
+        - build
+    - deploy:
+        requires:
+        - test
+        filters:
+          branches:
+            only:
+            - master
+
