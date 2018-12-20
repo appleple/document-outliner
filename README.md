@@ -29,7 +29,7 @@ yarn add document-outliner
 #### vid cdn
 
 ```html
-<script src="https://unpkg.com/document-outliner@0.1.0/bundle/document-outliner.js"></script>
+<script src="https://unpkg.com/document-outliner@latest/bundle/document-outliner.js"></script>
 ```
 
 ### jQuery plugin
@@ -37,7 +37,7 @@ yarn add document-outliner
 #### via cdn
 
 ```html
-<script src="https://unpkg.com/document-outliner@0.1.0/bundle/jquery-document-outliner.js"></script>
+<script src="https://unpkg.com/document-outliner@latest/bundle/jquery-document-outliner.js"></script>
 ```
 
 ## Usage
