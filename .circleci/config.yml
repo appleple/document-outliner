@@ -23,7 +23,7 @@ jobs:
       command: npm run build
     - run:
       name: Transpile typescript to es5
-      command: npm run build:lib
+      command: 'npm run build:lib'
     - save_cache:
         key: v1-dependencies-{{ checksum "package.json" }}
         paths:
