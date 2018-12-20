@@ -164,6 +164,22 @@
       margin-bottom: 20px;
       font-size: 1.25em;
     }
+
+    @media screen and (max-width: 768px) {
+
+      .inner-demo .grid {
+        display: block;
+        width: 100%;
+        margin: 0;
+      }
+      .inner-demo .grid-cell {
+        padding: 0 !important;
+      }
+      .inner-demo .grid-cell:first-child {
+        margin-bottom: 15px;
+      }
+    }
+    
   </style>
 </head>
 
@@ -202,7 +218,7 @@
     <div class="content">
 
       <section class="section">
-        <div class="inner">
+        <div class="inner inner-demo">
           <h2 id="demo" class="section-title">Demo</h2>
           <div class="grid is-gutter is-col-2">
             <div class="grid-cell">
@@ -211,22 +227,38 @@
             <div class="grid-cell">
               <div class="js-outline"></div>
               <div class="js-container" style="display: none;"><h1>The Tax Book</h1>
-<h2>Earning money</h2>
-<p>Earning money is good.</p>
-<h3>Getting a job</h3>
-<p>To earn money you typically need a job.</p>
-<h2>Spending money</h2>
-<p>Spending is what money is mainly used for.</p>
-<h3>Cheap things</h3>
-<p>Buying cheap things often not cost-effective.</p>
-<h3>Expensive things</h3>
-<p>The most expensive thing is often not the most cost-effective either.</p>
-<h2>Investing money</h2>
-<p>You can lend your money to other people.</p>
-<h2>Losing money</h2>
-<p>If you spend money or invest money, sooner or later you will lose money.
-<h3>Poor judgement</h3>
-<p>Usually if you lose money it's because you made a mistake.</p></div>
+<section>
+  <h1>Earning money</h1>
+  <p>Earning money is good.</p>
+  <section>
+    <h1>Getting a job</h1>
+    <p>To earn money you typically need a job.</p>
+  </section>
+</section>
+<section>
+  <h1>Spending money</h1>
+  <p>Spending is what money is mainly used for.</p>
+  <section>
+    <h1>Cheap things</h1>
+    <p>Buying cheap things often not cost-effective.</p>
+  </section>
+  <section>
+    <h1>Expensive things</h1>
+    <p>The most expensive thing is often not the most cost-effective either.</p>
+  </section>
+</section>
+<section>
+  <h1>Investing money</h1>
+  <p>You can lend your money to other people.</p>
+</section>
+<section>
+  <h1>Losing money</h1>
+  <p>If you spend money or invest money, sooner or later you will lose money.</p>
+  <section>
+    <h1>Poor judgement</h1>
+    <p>Usually if you lose money it's because you made a mistake.</p>
+  </section>
+</section></div>
             </div>
           </div>
         </div>
@@ -293,6 +325,7 @@ outliner.makeList('.outline', {
   anchorName: 'heading-$1'
 });</code></pre>
           <p>For your reference, below is the list of the options available.</p>
+          <div style="overflow:auto" class="js-scrollable">
           <table class="table is-zebra" style="width: 100%;">
             <tr>
               <th style="text-align:left;">Name</th>
@@ -340,6 +373,7 @@ outliner.makeList('.outline', {
               <td>limit on number of level</td>
             </tr>
           </table>
+          </div>
         </div>
       </section>
 
@@ -399,6 +433,10 @@ outliner.makeList('.outline', {
 
   <script src="https://kokushin.github.io/unim/dist/js/unim.js"></script>
   <script src="https://unpkg.com/document-outliner@latest/bundle/document-outliner.js"></script>
+  <script src="https://unpkg.com/scroll-hint@latest/js/scroll-hint.js"></script>
+  <script>
+  new ScrollHint('.js-scrollable');
+  </script>
   <script>
     var container = document.querySelector('.js-container');
     var textarea = document.querySelector('.js-textarea');
@@ -407,8 +445,8 @@ outliner.makeList('.outline', {
       container.innerHTML = textarea.value;
       var outliner = new DocumentOutliner(container);
       outliner.makeList('.js-outline', {
-        link: true,
-        listType: 'ul',
+        link: false,
+        listType: 'ol',
         listClassName: 'list-group',
         itemClassName: 'list-group-item',
         anchorName: 'heading-$1'
