@@ -1,6 +1,7 @@
 import {SectionType, OutlineType, NodeType, OptionsType} from "./type";
 import Section from "./section";
 import Outline from "./outline";
+import MakeList from "./make-list";
 import {
   isSectioningRoot,
   isSectioningContent,
@@ -36,71 +37,15 @@ export default class DocumentOutliner {
   }
 
   public makeList(target: string | NodeListOf<HTMLElement>, options: OptionsType): void {
-    let html = '';
-    let anchor = 1;
-    const opt = Object.assign({}, {
-      link: true,
-      listType: 'ol',
-      levelLimit: 99,
-      listClassName: '',
-      itemClassName: '',
-      anchorName: 'header-$1'
-    }, options);
+    const outline = this.getOutlineObject();
+    if (!outline) {
+      throw new Error('No sectioning contents.')
+    }
     if (!target) {
       throw new TypeError('Invalid options: target empty.');
     }
-    if (!/ol|ul/.test(opt.listType)) {
-      throw new TypeError("Invalid options: linkType be ul or ol.");
-    }
-    if (!this.currentOutlineTarget) {
-      throw new Error("No sectioning contents.");
-    }
-    const output = (outline: OutlineType | SectionType, level: number) => {
-      if (level > opt.levelLimit) {
-        return;
-      }
-      let noHeading = true;
-      outline.getSections().forEach((section) => {
-        if (section.getHeading()) {
-          noHeading = false;
-          return;
-        }
-      });
-      if (!noHeading) {
-        const listClassName = opt.listClassName ? ` ${opt.linkClassName}` : '';
-        html += `<${opt.listType} class="level-${level}${listClassName}">`;
-      }
-      outline.getSections().forEach((section) => {
-        const heading = section.getHeading() as HTMLElement;
-        if (isHeadingContent(heading)) {
-          const itemClassName = opt.itemClassName ? ` class="${opt.itemClassName}"` : '';
-          if (opt.link) {
-            const anchorClassName = opt.linkClassName ? ` class="${opt.linkClassName}"` : '';
-            let anchorName = opt.anchorName.replace(/\$1/, anchor.toString());
-            if (heading.id) {
-              anchorName = heading.id;
-            } else {
-              heading.id = anchorName;
-            }
-            html += `<li${itemClassName}><a href="#${anchorName}"${anchorClassName}>${heading.innerText}</a>`;
-          } else {
-            html += `<li${itemClassName}>${heading.innerText}`;
-          }
-          anchor++;
-        } else {
-          html += '<li>';
-        }
-        if (section.getSections()) {
-          const nextLevel = noHeading ? level : level + 1;
-          output(section, nextLevel);
-        }
-        html += '</li>';
-      });
-      if (!noHeading) {
-        html += `</${opt.listType}>`;
-      }
-    };
-    output(this.currentOutlineTarget.getOutline(), 1);
+    const makeList = new MakeList(outline as OutlineType, options);
+    const html = makeList.getHtml();
 
     if (typeof target === 'string') {
       [].forEach.call(document.querySelectorAll(target), (dom: HTMLElement) => {
