@@ -63,6 +63,7 @@ export default class MakeList {
   protected buildSections(sections: Array<SectionType>, hasHeading: boolean, level: number): void {
     sections.forEach((section) => {
       const heading = section.getHeading() as HTMLElement;
+      const nextLevel = hasHeading ? level + 1 : level;
       if (isHeadingContent(heading)) {
         const itemClassName = this.options.itemClassName ? ` class="${this.options.itemClassName}"` : '';
         if (this.options.link) {
@@ -70,14 +71,23 @@ export default class MakeList {
         } else {
           this.html += `<li${itemClassName}>${heading.innerText}`;
         }
-      } else {
-        this.html += '<li>';
-      }
-      if (section.getSections()) {
-        const nextLevel = hasHeading ? level + 1 : level;
+        if (section.getSections().length > 0) {
+          this.build(section, nextLevel);
+        }
+        this.html += '</li>';
+      } else if (section.getSections().length > 0) {
+        if (hasHeading) {
+          this.html += '<li>';
+        }
+        const tmp = this.html;
         this.build(section, nextLevel);
+        if (tmp === this.html) {
+          this.html = this.html.slice(0, '<li>'.length * -1);
+        }
+        if (hasHeading) {
+          this.html += '</li>';
+        }
       }
-      this.html += '</li>';
     });
   }
 
@@ -96,7 +106,7 @@ export default class MakeList {
   protected hasHeading(sections: Array<SectionType>): boolean {
     let hasHeading = false;
     sections.forEach((section) => {
-      if (section.getHeading()) {
+      if (section.getHeading() && isHeadingContent(section.getHeading())) {
         hasHeading = true;
       }
     });
