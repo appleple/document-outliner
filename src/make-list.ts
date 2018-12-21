@@ -51,7 +51,7 @@ export default class MakeList {
     }
     const hasHeading = this.hasHeading(outline.getSections());
     if (hasHeading) {
-      const listClassName = this.options.listClassName ? ` ${this.options.linkClassName}` : '';
+      const listClassName = this.options.listClassName ? ` ${this.options.listClassName}` : '';
       this.html += `<${this.getListType(level - 1)} class="level-${level}${listClassName}">`;
     }
     this.buildSections(outline.getSections(), hasHeading, level);
