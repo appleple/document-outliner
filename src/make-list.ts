@@ -15,6 +15,7 @@ export default class MakeList {
       levelLimit: 99,
       listClassName: '',
       itemClassName: '',
+      exceptClass: '',
       anchorName: 'header-$1'
     }, options) as ConfigType;
   }
@@ -64,7 +65,7 @@ export default class MakeList {
     sections.forEach((section) => {
       const heading = section.getHeading() as HTMLElement;
       const nextLevel = hasHeading ? level + 1 : level;
-      if (isHeadingContent(heading)) {
+      if (isHeadingContent(heading) && !heading.classList.contains(this.options.exceptClass)) {
         const itemClassName = this.options.itemClassName ? ` class="${this.options.itemClassName}"` : '';
         if (this.options.link) {
           this.html += `<li${itemClassName}>${this.buildLink(heading)}`;
