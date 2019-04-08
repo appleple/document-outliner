@@ -11,7 +11,7 @@ type ConfigType = {
   listClassName: string,
   itemClassName: string,
   linkClassName: string,
-  exceptClass: string
+  exceptClass: string,
   anchorName: string,
   levelLimit: number
 };
