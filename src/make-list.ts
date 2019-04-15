@@ -107,7 +107,12 @@ export default class MakeList {
   protected hasHeading(sections: Array<SectionType>): boolean {
     let hasHeading = false;
     sections.forEach((section) => {
-      if (section.getHeading() && isHeadingContent(section.getHeading())) {
+      const heading = section.getHeading();
+      if (heading
+        && isHeadingContent(heading)
+        && heading instanceof HTMLElement
+        && !heading.classList.contains(this.options.exceptClass)
+      ) {
         hasHeading = true;
       }
     });
