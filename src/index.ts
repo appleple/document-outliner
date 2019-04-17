@@ -105,7 +105,7 @@ export default class DocumentOutliner {
         // 1. If the current section has no heading,
         if (this.currentSection && !this.currentSection.getHeading()) {
           // create an implied heading and let that be the heading for the current section.
-          this.currentSection.setHeading(new Text('No title.'))
+          this.currentSection.setHeading(document.createTextNode('No title.'));
           this.currentSection.setImplied(true);
         }
         // Push current outline target onto the stack.
@@ -209,7 +209,7 @@ export default class DocumentOutliner {
     if (isSectioningContent(node) && this.stack.length > 0) {
       // 1. If the current section has no heading, create an implied heading and let that be the heading for the current section.
       if (this.currentSection && !this.currentSection.getHeading()) {
-        this.currentSection.setHeading(new Text('No title.'));
+        this.currentSection.setHeading(document.createTextNode('No title.'));
         this.currentSection.setImplied(true);
       }
       const tmpOutline = this.currentOutlineTarget as OutlineType;
@@ -229,7 +229,7 @@ export default class DocumentOutliner {
     if ((isSectioningRoot(node) || node === this.rootNode) && this.stack.length > 0) {
       // 1. If the current section has no heading, create an implied heading and let that be the heading for the current section.
       if (this.currentSection && !this.currentSection.getHeading()) {
-        this.currentSection.setHeading(new Text('No title.'));
+        this.currentSection.setHeading(document.createTextNode('No title.'));
         this.currentSection.setImplied(true);
       }
       // 2. Let current section be current outline target's parent section.
@@ -247,7 +247,7 @@ export default class DocumentOutliner {
     if (isSectioningRoot(node) || node === this.rootNode || isSectioningContent(node)) {
       // If the current section has no heading, create an implied heading and let that be the heading for the current section.
       if (this.currentSection && !this.currentSection.getHeading()) {
-        this.currentSection.setHeading(new Text('No title.'));
+        this.currentSection.setHeading(document.createTextNode('No title.'));
         this.currentSection.setImplied(true);
       }
       // Skip to the next step in the overall set of steps. (The walk is over.)
