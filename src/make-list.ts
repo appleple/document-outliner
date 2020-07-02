@@ -70,7 +70,7 @@ export default class MakeList {
         if (this.options.link) {
           this.html += `<li${itemClassName}>${this.buildLink(heading)}`;
         } else {
-          this.html += `<li${itemClassName}>${heading.innerText}`;
+          this.html += `<li${itemClassName}>${heading.innerHTML}`;
         }
         if (section.getSections().length > 0) {
           this.build(section, nextLevel);
@@ -101,7 +101,7 @@ export default class MakeList {
       heading.id = anchorName;
     }
     this.anchor++;
-    return `<a href="#${anchorName}"${anchorClassName}>${heading.innerText}</a>`;
+    return `<a href="#${anchorName}"${anchorClassName}>${heading.innerHTML}</a>`;
   }
 
   protected hasHeading(sections: Array<SectionType>): boolean {
